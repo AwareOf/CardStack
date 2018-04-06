@@ -1,0 +1,59 @@
+body{
+    background: #DDD;
+}
+
+.row {
+    margin-top: 75px;
+}
+
+.deck{
+    padding: 0;
+    list-style-type: none;
+}
+
+.issue_card {
+    /* Paper Style: https://www.sitepoint.com/pure-css3-paper-curls/ */
+    list-style: none;
+    position: relative;
+	padding: 15px 30px;
+    margin-bottom: 20px;
+	background-color: #fff;
+	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+/* On mouse-over, add a deeper shadow */
+.issue_card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.category {
+    border-bottom: 1px solid red;
+    padding: 15px 0;
+    font-size: 1.5rem;
+}
+
+.content {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #77B7FF;
+}
+
+h1{
+    font-size: 1.5rem;
+    margin-top: 15px;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+.create_at {
+    padding-top: 15px;
+    text-align: right;
+    color: #8C9399;
+}
+
+.error {
+    margin-bottom: 20px;
+}
