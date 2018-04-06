@@ -100,22 +100,31 @@
         var content = '';
         if( cards != null ){
             cards.forEach(function(card) {
+                var isValid = false;
+
                 var categories = [];
                 
                 card.labels.forEach(function(label){
-                    categories.push(label.name)
+                    
+                    if(label.name === 'Read&Write'){
+                        isValid = true;
+                    } else {
+                        categories.push(label.name);
+                    }
                 })
 
-                markdownContent = '# ' + card.title + '\r ' + card.body
-                htmlContent = markdown.toHTML(markdownContent);
+                if( isValid ) {
+                    markdownContent = '# ' + card.title + '\r ' + card.body
+                    htmlContent = markdown.toHTML(markdownContent);
 
-                var li = '<li class="issue_card">' +
-                         '<div class="category">' + categories.join(', ') + '</div>' +
-                         '<div class="content">' + htmlContent + '</div>' +
-                         '<div class="create_at">' + new Date(card.created_at).toLocaleString() + '</div>' +
-                         '</li>'
-                
-                content += li;
+                    var li = '<li class="issue_card">' +
+                            '<div class="category">' + categories.join(', ') + '</div>' +
+                            '<div class="content">' + htmlContent + '</div>' +
+                            '<div class="create_at">' + new Date(card.created_at).toLocaleString() + '</div>' +
+                            '</li>'
+                    
+                    content += li;
+                }
             });
             
             return content;
