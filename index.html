@@ -114,7 +114,8 @@
                 })
 
                 if( isValid ) {
-                    markdownContent = '# ' + card.title + '\r ' + card.body
+                    console.log('what happend?')
+                    markdownContent = '# ' + card.title + '\r' + card.body
                     htmlContent = markdown.toHTML(markdownContent);
 
                     var li = '<li class="issue_card">' +
@@ -142,15 +143,19 @@
             // filter date from since & that week.
             var cards = [];
 
-            data.forEach(function(card){
+            // data.forEach(function(card){
 
-                if( new Date(card.created_at).getTime() < lastDayOfWeek.getTime() &&
-                    new Date(card.updated_at).getTime() < lastDayOfWeek.getTime()) {
-                    cards.push(card)
-                }
-            })
+            //     // if( new Date(card.created_at).getTime() < lastDayOfWeek.getTime() &&
+            //     //     new Date(card.updated_at).getTime() < lastDayOfWeek.getTime()) {
+            //     if( new Date(card.created_at).getTime() < lastDayOfWeek.getTime() ){
+            //             console.log(card)
+            //         cards.push(card)
+            //     }
+            // })
 
-            var content = genHTML(cards)
+            // var content = genHTML(cards)
+            var content = genHTML(data)
+            
             // refresh the document
             $("#deck").html(content)
         }).fail(function(err) {
