@@ -9,6 +9,10 @@ body{
 .deck{
     padding: 0;
     list-style-type: none;
+    letter-spacing: 0.08rem;
+    list-style-type: none;
+    line-height: 1.8rem;
+    color: #676767;
 }
 
 .issue_card {
@@ -80,4 +84,20 @@ h6 {
 
 img {
     width: 100%;
+}
+
+blockquote {
+    color: #4a5ca5;
+    padding: 10px 50px 0px 40px;
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.5rem;
+}
+
+ul {
+    list-style-type: kannada;
+}
+
+ul li {
+    padding-bottom: 1rem;
 }
