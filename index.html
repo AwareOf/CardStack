@@ -56,7 +56,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; hexcola 2018</p>
+        <p class="m-0 text-center text-white">Copyright &copy; hexcola 2018 | <a href="www.miitbeian.gov.cn">豫ICP备17040703号</a></p>
     </div>
     <!-- /.container -->
     </footer>
@@ -106,15 +106,18 @@
                 
                 card.labels.forEach(function(label){
                     
-                    if(label.name === 'Read&Write'){
-                        isValid = true;
-                    } else {
-                        categories.push(label.name);
-                    }
+                    // if(label.name === 'Read&Write'){
+                    //     isValid = true;
+                    // } else {
+                    //     categories.push(label.name);
+                    // }
+
+                    // Temp code
+                    isValid = true;
+                    categories.push(label.name);
                 })
 
                 if( isValid ) {
-                    console.log('what happend?')
                     markdownContent = '# ' + card.title + '\r' + card.body
                     htmlContent = markdown.toHTML(markdownContent);
 
@@ -167,48 +170,31 @@
 
         var urlParams = new URLSearchParams(window.location.search);
 
-        if(urlParams.has('user') && urlParams.has('repo')) {
+        var selectedDate = null;
 
-            if (urlParams.has('date')) {
-                queryURL += ('' + urlParams.get('date') )
-            } 
+        var user = urlParams.get('user') || 'hexcola';
+        var repo = urlParams.get('repo') || 'note';
 
-
-            var selectedDate = null;
-
-            if (urlParams.has('date')) {
-                selectedDate = new Date(urlParams.get('date'));
-            } else {
-                selectedDate = new Date();
-            }
-
-            var firstDayOfWeek = getFirstDayOfWeek(selectedDate);
-            var lastDayOfWeek = getLastDayOfWeek(selectedDate);
-
-            var queryURL = 'https://api.github.com/repos/' 
-                + urlParams.get('user') + '/'  
-                + urlParams.get('repo')  
-                + '/issues?direction=asc&since=' 
-
-            // get issues since that day
-            getCards(queryURL, firstDayOfWeek, lastDayOfWeek);
-
+        if (urlParams.has('date')) {
+            selectedDate = new Date(urlParams.get('date'));
         } else {
-            var message = 'URL格式: <br><br>' 
-                + 'http://域名/index.html?user=GITHUB_ACCOUNT&repo=GITHUB_REPOSTORY<br>'
-                + '<br>或者<br><br>'
-                + 'http://域名/index.html?user=GITHUB_ACCOUNT&repo=GITHUB_REPOSTORY&date=2018-1-1'
-            
-            var content = '<div class="card h-100">'
-                + '<div class="card-body">'
-                + '<h4 class="card-title">'
-                + '<a href="#">提示</a>'
-                + '</h4>'
-                + '<p class="card-text">'
-                + message +'</p>'
-                + '</div>'
-            $("#msg").html(content)
+            selectedDate = new Date();
         }
+
+        var firstDayOfWeek = getFirstDayOfWeek(selectedDate);
+        var lastDayOfWeek = getLastDayOfWeek(selectedDate);
+
+        var queryURL = 'https://api.github.com/repos/' 
+            + user + '/'  
+            + repo 
+            + '/issues?direction=asc&since=' 
+
+        if (urlParams.has('date')) {
+            queryURL += ('' + urlParams.get('date') )
+        } 
+
+        // get issues since that day
+        getCards(queryURL, firstDayOfWeek, lastDayOfWeek);
     });
 </script>
 
