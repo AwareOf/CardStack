@@ -86,7 +86,7 @@ img {
     width: 100%;
 }
 
-blockquote {
+.issue_card blockquote {
     color: #4a5ca5;
     padding: 10px 50px 0px 40px;
     font-size: 0.9rem;
@@ -94,10 +94,10 @@ blockquote {
     line-height: 1.5rem;
 }
 
-ul {
+.issue_card ul {
     list-style-type: kannada;
 }
 
-ul li {
+.issue_card ul li {
     padding-bottom: 1rem;
 }
